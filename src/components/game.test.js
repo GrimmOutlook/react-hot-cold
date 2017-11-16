@@ -50,9 +50,9 @@ describe('<Game />', () => {
   it('Resets game', () => {
     const wrapper = shallow(<Game />);
     wrapper.setState({
-      guesses: [12, 4, 5],
-      feedback: 'Make your guess!',
-      correctAnswer: 60
+      guesses: [12, 4, 5, 66],
+      feedback: 'You got it!',
+      correctAnswer: 66
     });
     wrapper.instance().newGame();
     expect(wrapper.state("guesses")).toEqual([]);
