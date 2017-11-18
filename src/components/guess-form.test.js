@@ -9,16 +9,16 @@ describe('<GuessForm />', () => {
   });
 
   // -----MY SOLUTION------- test fails:  TypeError: event.preventDefault is not a function
-  // it('Fires the onGuess callback when a user guess is entered', () => {
-  //   const callback = jest.fn();
-  //   const wrapper = mount(<GuessForm onGuess={callback} />);
-  //   const userGuess = 43;
-  //   wrapper.instance().onGuess(true);
-  //   wrapper.update();
-  //   wrapper.find('input[type="text"]').instance.userGuess = userGuess;
-  //   wrapper.simulate('submit');
-  //   expect(callback).toHaveBeenCalledWith(userGuess);
-  // });
+  it('Fires the onGuess callback when a user guess is entered', () => {
+    const callback = jest.fn();
+    const wrapper = mount(<GuessForm onGuess={callback} />);
+    const userGuess = 43;
+    // wrapper.instance().onGuess(true);
+    // wrapper.update();
+    wrapper.find('input[type="text"]').instance().value = userGuess;
+    wrapper.simulate('submit');
+    expect(callback).toHaveBeenCalledWith(userGuess);
+  });
 
   // ----THINKFUL SOLUTION---- tests fail:  ReactWrapper::instance() can only be called on the root
   // it('Should fire the onGuess callback when the form is submitted', () => {
